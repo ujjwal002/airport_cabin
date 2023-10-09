@@ -25,11 +25,13 @@ const app = express();
 })();
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes")
+const adminRoutes = require("./routes/adminRoutes")
 
 app.use(express.json());
 
 app.use("/user", userRoutes);
 app.use("/product", productRoutes);
+app.use("/admin", adminRoutes)
 
 app.listen(3000, () => {
   console.log("server started at port 3000");
