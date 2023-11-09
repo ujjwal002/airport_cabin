@@ -4,6 +4,6 @@ const router = express.Router();
 
 const ctrl = require("../controllers/adminCtrl")
 
-router.get("", ctrl.login)
+router.post("", ctrl.login)
 
 module.exports = router;

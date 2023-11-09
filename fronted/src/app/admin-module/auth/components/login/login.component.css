@@ -1,0 +1,25 @@
+.admin_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.admin_login {
+  max-width: 50%;
+  max-height: 50%;
+  border: 1px solid blue;
+  padding: 20px;
+}
+input {
+  width: 100%;
+}
+button {
+  margin-top: 10px;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  border: 0px;
+  padding: 5px;
+}

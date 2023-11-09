@@ -1,10 +1,9 @@
 const express = require('express');
-
+const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const sequelize = require("./config/database");
-
-
+const cors = require('cors')
 const app = express();
-
 (async () => {
   try {
     await sequelize.authenticate();
@@ -28,11 +27,15 @@ const productRoutes = require("./routes/productRoutes")
 const adminRoutes = require("./routes/adminRoutes")
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors())
 
 app.use("/user", userRoutes);
 app.use("/product", productRoutes);
 app.use("/admin", adminRoutes)
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("server started at port 3000");
 })

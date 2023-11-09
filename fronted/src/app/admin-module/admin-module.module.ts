@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminModuleRoutingModule } from './admin-module-routing.module';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
+
+import { LoginComponent } from './auth/components/login/login.component';
+import { SignupComponent } from './auth/components/signup/signup.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -14,14 +16,15 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
   declarations: [
     LoginComponent,
     SignupComponent,
-  
     HomeComponent,
     AboutComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
-    AdminModuleRoutingModule
+    AdminModuleRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModuleModule { }
