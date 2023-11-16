@@ -1,40 +1,41 @@
-const Admin = require('../models/admin');
+const Admin = require("../models/admin");
 
 const bcrypt = require("bcrypt");
 
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log("body is this");
     console.log(req.body);
 
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Please enter your email or passsword'
-      })
+        message: "Please enter your email or passsword",
+      });
     }
 
     const admin = await Admin.findOne({
       where: {
-        email
-      }
-    })
+        email,
+      },
+    });
     if (!admin) {
       return res.status(404).json({
         success: false,
-        message: "Admin does not exist"
-      })
+        message: "Admin does not exist",
+      });
     }
     const payload = {
       id: admin.id,
-      username: admin.email
-    }
+      username: admin.email,
+    };
     if (admin.password === password) {
       let token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: "2h",
-      })
+      });
       admin.token = token;
       admin.password = undefined;
       const options = {
@@ -45,15 +46,18 @@ exports.login = async (req, res) => {
         success: true,
         token,
         admin,
-        message: "Admin logged in succesfully"
-      })
+        message: "Admin logged in succesfully",
+      });
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "password is incorrect",
+      });
     }
-
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message
-    })
-
+      message: error.message,
+    });
   }
-}
+};

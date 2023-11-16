@@ -23,3 +23,12 @@ button {
   border: 0px;
   padding: 5px;
 }
+span {
+  color: red;
+}
+.form_group {
+  margin: 20px;
+}
+.admin_container {
+  background-color: red;
+}

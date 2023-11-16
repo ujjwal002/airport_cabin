@@ -12,7 +12,7 @@ const Admin = sequelize.define("Admin", {
     type: DataTypes.STRING,
   },
   password: {
-    type: DataTypes.INTEGER
+    type: DataTypes.STRING,
   },
   createdAt: {
     type: DataTypes.DATE,
